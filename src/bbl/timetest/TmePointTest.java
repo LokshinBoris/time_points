@@ -90,5 +90,15 @@ class TmePointTest {
 		TimePoint timePoint3= new TimePoint(10,TimeUnit.HOUR);
 		TimePoint actual3=timePoint3.with(futureProximityAdjuster);
 		assertTrue(actual3==null);
+		
+		TimePoint[] timePoints1 = new TimePoint[] {	new TimePoint(1,TimeUnit.HOUR),
+													new TimePoint(3600,TimeUnit.SECOND),
+													new TimePoint(60,TimeUnit.MINUTE), 
+													
+												  };
+		FutureProximityAdjuster futureProximityAdjuster1=new FutureProximityAdjuster(timePoints1);
+		TimePoint timePoint4= new TimePoint(60,TimeUnit.MINUTE);
+		TimePoint actual4=timePoint4.with(futureProximityAdjuster1);
+		assertTrue(actual4==null);
 	}
 }

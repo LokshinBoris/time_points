@@ -19,9 +19,12 @@ public class FutureProximityAdjuster implements TimePointAdjuster
 		int index=Arrays.binarySearch(timePoints, point,(a,b)->a.compareTo(b));
 		TimePoint ret=null;
 		if (index<0) index=-(index+1);
-		if(index<(timePoints.length))
+		else
 		{
-			while (index<timePoints.length-1 && timePoints[index].compareTo(timePoints[index+1])==0) index++;
+			while (index<timePoints.length && timePoints[index].compareTo(timePoints[index-1])==0) index++;
+		}
+		if(index<timePoints.length)
+		{
 			ret=timePoints[index];
 			ret=ret.convert(point.getTimeUnit());
 		}
