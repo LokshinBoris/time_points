@@ -73,21 +73,22 @@ class TmePointTest {
 	{
 		
 		TimePoint[] timePoints = new TimePoint[] {	new TimePoint(1,TimeUnit.HOUR),
+													new TimePoint(58*60,TimeUnit.SECOND),
 													new TimePoint(58,TimeUnit.MINUTE), 
 													new TimePoint(3700,TimeUnit.SECOND)
 												  };
-		ProximityAdjuster proximityAdjuster=new ProximityAdjuster(timePoints);
+		FutureProximityAdjuster futureProximityAdjuster=new FutureProximityAdjuster(timePoints);
 		
 		TimePoint timePoint1= new TimePoint(59,TimeUnit.MINUTE);
-		TimePoint actual1=timePoint1.with(proximityAdjuster);
+		TimePoint actual1=timePoint1.with(futureProximityAdjuster);
 		assertEquals(60,actual1.getAmount());
 		
 		TimePoint timePoint2= new TimePoint(0,TimeUnit.HOUR);
-		TimePoint actual2=timePoint2.with(proximityAdjuster);
+		TimePoint actual2=timePoint2.with(futureProximityAdjuster);
 		assertEquals(0,actual2.getAmount());
 		
 		TimePoint timePoint3= new TimePoint(10,TimeUnit.HOUR);
-		TimePoint actual3=timePoint3.with(proximityAdjuster);
+		TimePoint actual3=timePoint3.with(futureProximityAdjuster);
 		assertTrue(actual3==null);
 	}
 }

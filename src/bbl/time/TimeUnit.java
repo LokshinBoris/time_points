@@ -14,7 +14,6 @@ public enum TimeUnit
 	}
 	public TimePoint between(TimePoint point1, TimePoint point2)
 	{
-		// TimePoint newTimePoint = new TimePoint(Math.abs(point1.convert(this).getAmount()-point2.convert(this).getAmount()),this);
 		// return newTimePoint= point1-point2 
 		TimePoint newTimePoint = new TimePoint(point1.convert(this).getAmount()-point2.convert(this).getAmount(),this);
 		return newTimePoint;
